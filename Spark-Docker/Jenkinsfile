@@ -3,6 +3,6 @@ node('docker') {
     stage 'Checkout'
         checkout scm
     stage 'Integration Test'
-        sh "docker-compose -f docker-compose.yml up --force-recreate --abort-on-container-exit"
-        sh "docker-compose -f docker-compose.yml down -v"
+        sh "docker-compose -f /home/jenkins/workspace/testing/Spark-Docker/docker-compose.yml up --force-recreate --abort-on-container-exit"
+        sh "docker-compose -f /home/jenkins/workspace/testing/Spark-Docker/docker-compose.yml down -v"
 }
