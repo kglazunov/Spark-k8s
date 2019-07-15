@@ -6,5 +6,8 @@ node('docker') {
         sh "cd /home/jenkins/workspace/testing/Spark-Docker/;./build-images.sh"
     stage 'Integration Test'
         sh "docker-compose -f /home/jenkins/workspace/testing/Spark-Docker/docker-compose.yml up --force-recreate -d"
+    stage 'Execute Python script'
+        sh "sh 'python /home/jenkins/workspace/testing/Spark-Docker/Pi.py'"
+    stage 'Shutdown Spark'
         sh "docker-compose -f /home/jenkins/workspace/testing/Spark-Docker/docker-compose.yml down -v"
 }
