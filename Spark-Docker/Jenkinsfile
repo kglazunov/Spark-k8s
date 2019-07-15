@@ -7,6 +7,7 @@ node('docker') {
     stage 'Integration Test'
         sh "docker-compose -f /home/jenkins/workspace/testing/Spark-Docker/docker-compose.yml up --force-recreate -d"
     stage 'Execute Python script'
+        sh "sleep(time:10,unit:"SECONDS""
         sh "python /home/jenkins/workspace/testing/Spark-Docker/Pi.py"
     stage 'Shutdown Spark'
         sh "docker-compose -f /home/jenkins/workspace/testing/Spark-Docker/docker-compose.yml down -v"
