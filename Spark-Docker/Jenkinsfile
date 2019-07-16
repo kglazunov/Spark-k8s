@@ -11,5 +11,5 @@ node('docker') {
     stage 'Shutdown Spark containers'
         sh "docker-compose -f /home/jenkins/workspace/testing/Spark-Docker/docker-compose.yml down -v"
     stage 'Remove Spark docker images'
-        sh "docker image rm $(docker image ls | grep spark | awk '{ print $3}')"
+        sh "'docker image rm $(docker image ls | grep spark | awk '{ print $3}')'"
 }
