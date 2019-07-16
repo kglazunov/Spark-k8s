@@ -1,8 +1,7 @@
 node('docker') {
- 
-    stage 'Checkout'
+    stage 'Checkout from Github'
         checkout scm
-    stage 'Run build-images.sh'
+    stage 'Build Spark images with python and pyspark package'
         sh "cd /home/jenkins/workspace/testing/Spark-Docker/;./build-images.sh"
     stage 'Integration Test'
         sh "docker-compose -f /home/jenkins/workspace/testing/Spark-Docker/docker-compose.yml up --force-recreate -d"
@@ -11,4 +10,6 @@ node('docker') {
         sh "python /home/jenkins/workspace/testing/Spark-Docker/Pi.py"
     stage 'Shutdown Spark containers'
         sh "docker-compose -f /home/jenkins/workspace/testing/Spark-Docker/docker-compose.yml down -v"
+    stage 'Remove Spark docker images'
+        sh "docker image rm $(docker image ls | grep spark | awk '{ print $3}')"
 }
