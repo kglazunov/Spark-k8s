@@ -1,7 +1,7 @@
 node('docker') {
     stage 'Checkout from Github'
         checkout scm
-    stage 'Build Spark images with python and pyspark package'
+    stage 'Build Spark images with python36 and pyspark, numpy packages'
         sh "cd /home/jenkins/workspace/testing/Spark-Docker/;./build-images.sh"
     stage 'Integration Test'
         sh "docker-compose -f /home/jenkins/workspace/testing/Spark-Docker/docker-compose.yml up --force-recreate -d"
