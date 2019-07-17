@@ -25,3 +25,4 @@ docker-compose-build-step
 ssh-agent
 credentials
 ssh-credentials
+kubernetes-cd-plugin
