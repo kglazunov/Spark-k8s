@@ -10,8 +10,8 @@ node('kuber') {
         sh "echo wiildoit"
     stage 'Remove Spark deployments,configmaps and etc'
         sh 'kubectl delete deployments.extensions spark-master spark-worker-1 spark-worker-2 spark-worker-3;kubectl delete configmaps spark-worker-1-env-spark-worker-sh spark-worker-2-env-spark-worker-sh spark-worker-3-env-spark-worker-sh;kubectl delete services spark-master spark-worker-1 spark-worker-2 spark-worker-3'
-	stage 'Remove pv'
-	    sh 'kubectl delete pv nfs-docker-spark'
-	stage 'Remove Spark namespace'
-	    sh 'kubectl delete namespace spark'
+    stage 'Remove pv'
+        sh 'kubectl delete pv nfs-docker-spark'
+    stage 'Remove Spark namespace'
+        sh 'kubectl delete namespace spark'
 }
