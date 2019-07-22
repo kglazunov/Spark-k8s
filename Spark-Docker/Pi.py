@@ -9,7 +9,7 @@ from pyspark import SparkContext
 
 from pyspark.sql import SparkSession
 
-CLUSTER_URL = 'spark://kglazunov-vm.minsk.epam.com:7077'
+CLUSTER_URL = 'spark://kglazunov-vm-k8.minsk.epam.com:7077'
 sc = SparkContext( CLUSTER_URL, 'pyspark')
 
 if __name__ == "__main__":
