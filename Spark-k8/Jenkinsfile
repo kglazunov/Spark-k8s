@@ -2,20 +2,20 @@ node('kuber') {
     stage 'Checkout from Github'
         checkout scm
     stage 'Create namespace Spark and nfs share'
-        sh 'kubectl create -f /home/jenkins/workspace/testing/Spark-k8/namespace-spark.json'
+        sh "kubectl create -f /home/jenkins/workspace/testing/Spark-k8/namespace-spark.json"
     stage 'Create nfs share'
-        sh 'kubectl create -f /home/jenkins/workspace/testing/Spark-k8/nfs-pv-pvc-spark.yml'
+        sh "kubectl create -f /home/jenkins/workspace/testing/Spark-k8/nfs-pv-pvc-spark.yml"
     stage 'Create pods for the Spark Cluster'
     sleep(time:10,unit:"SECONDS")
-        sh 'kubectl create -f /home/jenkins/workspace/testing/Spark-k8/export --namespace=spark'
+        sh "kubectl create -f /home/jenkins/workspace/testing/Spark-k8/export --namespace=spark"
     stage 'Running Py.py script'
-        sh 'echo willdoit'
+        sh "echo willdoit"
     stage 'Remove Spark deployments,configmaps and etc'
-        sh 'kubectl delete deployments.extensions spark-master spark-worker-1 spark-worker-2 spark-worker-3'
+        sh "kubectl delete deployments.extensions spark-master spark-worker-1 spark-worker-2 spark-worker-3"
     stage 'Remove Spark services'
-        sh 'kubectl delete services spark-master spark-worker-1 spark-worker-2 spark-worker-3'
+        sh "kubectl delete services spark-master spark-worker-1 spark-worker-2 spark-worker-3"
     stage 'Remove pv'
-        sh 'kubectl delete pv nfs-docker-spark'
+        sh "kubectl delete pv nfs-docker-spark"
     stage 'Remove Spark namespace'
-        sh 'kubectl delete namespace spark'
+        sh "kubectl delete namespace spark"
 }
