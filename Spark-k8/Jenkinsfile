@@ -9,9 +9,11 @@ node('kuber') {
     sleep(time:10,unit:"SECONDS")
         sh 'kubectl create -f /home/jenkins/workspace/testing/Spark-k8/export --namespace=spark'
     stage 'Running Py.py script'
-        sh 'echo wiildoit'
+        sh 'echo willdoit'
     stage 'Remove Spark deployments,configmaps and etc'
-        sh 'kubectl delete deployments.extensions spark-master spark-worker-1 spark-worker-2 spark-worker-3;kubectl delete configmaps spark-worker-1-env-spark-worker-sh spark-worker-2-env-spark-worker-sh spark-worker-3-env-spark-worker-sh;kubectl delete services spark-master spark-worker-1 spark-worker-2 spark-worker-3'
+        sh 'kubectl delete deployments.extensions spark-master spark-worker-1 spark-worker-2 spark-worker-3'
+    stage 'Remove Spark services'
+        sh 'kubectl delete services spark-master spark-worker-1 spark-worker-2 spark-worker-3'
     stage 'Remove pv'
         sh 'kubectl delete pv nfs-docker-spark'
     stage 'Remove Spark namespace'
