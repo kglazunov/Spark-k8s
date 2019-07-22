@@ -1,17 +1,15 @@
-node('kuber') {
+node('docker') {
     stage 'Checkout from Github'
         checkout scm
-    stage 'Create namespace Spark and nfs share'
-        sh "kubectl create -f /home/jenkins/workspace/testing/Spark-Docker/namespace-spark.json;kubectl create -f /home/jenkins/workspace/testing/Spark-Docker/nfs-pv-pvc-spark.yml"
-    stage 'Create pods for the Spark Cluster'
+    stage 'Build Spark images with python36 and pyspark, numpy packages'
+        sh "cd /home/jenkins/workspace/testing/Spark-Docker/;./build-images.sh"
+    stage 'Integration Test'
+        sh "docker-compose -f /home/jenkins/workspace/testing/Spark-Docker/docker-compose.yml up --force-recreate -d"
+    stage 'Acceptance Testing'
     sleep(time:10,unit:"SECONDS")
-        sh 'kubectl create -f /home/jenkins/workspace/testing/Spark-Docker/export --namespace=spark'
-    stage 'Running Py.py script'
-        sh "py.py"
-    stage 'Remove Spark deployments,configmaps and etc'
-        sh 'kubectl delete deployments.extensions spark-master spark-worker-1 spark-worker-2 spark-worker-3;kubectl delete configmaps spark-worker-1-env-spark-worker-sh spark-worker-2-env-spark-worker-sh spark-worker-3-env-spark-worker-sh;kubectl delete services spark-master spark-worker-1 spark-worker-2 spark-worker-3'
-	stage 'Remove pv'
-	    sh 'kubectl delete pv nfs-docker-spark'
-	stage 'Remove Spark namespace'
-	    sh 'kubectl delete namespace spark'
+        sh "python /home/jenkins/workspace/testing/Spark-Docker/Pi.py"
+    stage 'Shutdown Spark containers'
+        sh "docker-compose -f /home/jenkins/workspace/testing/Spark-Docker/docker-compose.yml down -v"
+    stage 'Remove Spark docker images'
+        sh '''docker image rm $(docker image ls | grep spark | awk '{ print $3}')'''
 }
