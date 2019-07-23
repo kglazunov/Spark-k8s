@@ -40,7 +40,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   namespace: spark
-  name: spark-worker
+  name: spark-worker-1
   labels:
     app: "spark-worker-1"
 spec:
@@ -76,7 +76,7 @@ piVersion: apps/v1
 kind: Deployment
 metadata:
   namespace: spark
-  name: spark-worker
+  name: spark-worker-2
   labels:
     app: "spark-worker-2"
 spec:
@@ -112,7 +112,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   namespace: spark
-  name: spark-worker
+  name: spark-worker-3
   labels:
     app: "spark-worker-3"
 spec:
