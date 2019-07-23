@@ -116,20 +116,6 @@ items:
           persistentVolumeClaim:
             claimName: nfs-docker-spark
   status: {}
-- apiVersion: v1
-  data:
-    SPARK_DRIVER_MEMORY: 128m
-    SPARK_EXECUTOR_MEMORY: 256m
-    SPARK_MASTER: spark://spark-master-1:7077
-    SPARK_MASTER_HOST: spark-master-1
-    SPARK_WORKER_CORES: "1"
-    SPARK_WORKER_MEMORY: 1G
-  kind: ConfigMap
-  metadata:
-    creationTimestamp: null
-    labels:
-      app: spark-worker-1
-    name: spark-worker-1-env
 - apiVersion: apps/v1
   kind: Deployment
   metadata:
@@ -198,20 +184,6 @@ items:
           persistentVolumeClaim:
             claimName: nfs-docker-spark
   status: {}
-- apiVersion: v1
-  data:
-    SPARK_DRIVER_MEMORY: 128m
-    SPARK_EXECUTOR_MEMORY: 256m
-    SPARK_MASTER: spark://spark-master-1:7077
-    SPARK_MASTER_HOST: spark-master-1
-    SPARK_WORKER_CORES: "1"
-    SPARK_WORKER_MEMORY: 1G
-  kind: ConfigMap
-  metadata:
-    creationTimestamp: null
-    labels:
-      app: spark-worker-2
-    name: spark-worker-2-env
 - apiVersion: apps/v1
   kind: Deployment
   metadata:
@@ -280,19 +252,5 @@ items:
           persistentVolumeClaim:
             claimName: nfs-docker-spark
   status: {}
-- apiVersion: v1
-  data:
-    SPARK_DRIVER_MEMORY: 128m
-    SPARK_EXECUTOR_MEMORY: 256m
-    SPARK_MASTER: spark://spark-master-1:7077
-    SPARK_MASTER_HOST: spark-master-1
-    SPARK_WORKER_CORES: "1"
-    SPARK_WORKER_MEMORY: 1G
-  kind: ConfigMap
-  metadata:
-    creationTimestamp: null
-    labels:
-      app: spark-worker-3
-    name: spark-worker-3-env
 kind: List
 metadata: {}
