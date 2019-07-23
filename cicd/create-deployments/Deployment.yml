@@ -61,27 +61,27 @@ spec:
         - name: SPARK_DRIVER_MEMORY
           valueFrom:
             configMapKeyRef:
-              name: spark-worker-1-env-spark-worker-sh
+              name: spark-worker-1-env
               key: SPARK_DRIVER_MEMORY
         - name: SPARK_EXECUTOR_MEMORY
           valueFrom:
             configMapKeyRef:
-              name: spark-worker-1-env-spark-worker-sh
+              name: spark-worker-1-env
               key: SPARK_EXECUTOR_MEMORY
         - name: SPARK_MASTER
           valueFrom:
             configMapKeyRef:
-              name: spark-worker-1-env-spark-worker-sh
+              name: spark-worker-1-env
               key: SPARK_MASTER
         - name: SPARK_WORKER_CORES
           valueFrom:
             configMapKeyRef:
-              name: spark-worker-1-env-spark-worker-sh
+              name: spark-worker-1-env
               key: SPARK_WORKER_CORES
         - name: SPARK_WORKER_MEMORY
           valueFrom:
             configMapKeyRef:
-              name: spark-worker-1-env-spark-worker-sh
+              name: spark-worker-1-env
               key: SPARK_WORKER_MEMORY
         ports:
         - name: webui
@@ -123,27 +123,27 @@ spec:
         - name: SPARK_DRIVER_MEMORY
           valueFrom:
             configMapKeyRef:
-              name: spark-worker-2-env-spark-worker-sh
+              name: spark-worker-2-env
               key: SPARK_DRIVER_MEMORY
         - name: SPARK_EXECUTOR_MEMORY
           valueFrom:
              configMapKeyRef:
-               name: spark-worker-2-env-spark-worker-sh
+               name: spark-worker-2-env
                key: SPARK_EXECUTOR_MEMORY
         - name: SPARK_MASTER
           valueFrom:
             configMapKeyRef:
-              name: spark-worker-2-env-spark-worker-sh
+              name: spark-worker-2-env
               key: SPARK_MASTER
         - name: SPARK_WORKER_CORES
           valueFrom:
             configMapKeyRef:
-              name: spark-worker-2-env-spark-worker-sh
+              name: spark-worker-2-env
               key: SPARK_WORKER_CORES
         - name: SPARK_WORKER_MEMORY
           valueFrom:
             configMapKeyRef:
-              name: spark-worker-2-env-spark-worker-sh
+              name: spark-worker-2-env
               key: SPARK_WORKER_MEMORY
         ports:
         - name: webui
@@ -185,27 +185,27 @@ spec:
         - name: SPARK_DRIVER_MEMORY
           valueFrom:
             configMapKeyRef:
-              name: spark-worker-3-env-spark-worker-sh
+              name: spark-worker-3-env
               key: SPARK_DRIVER_MEMORY
         - name: SPARK_EXECUTOR_MEMORY
           valueFrom:
              configMapKeyRef:
-               name: spark-worker-3-env-spark-worker-sh
+               name: spark-worker-3-env
                key: SPARK_EXECUTOR_MEMORY
         - name: SPARK_MASTER
           valueFrom:
             configMapKeyRef:
-              name: spark-worker-3-env-spark-worker-sh
+              name: spark-worker-3-env
               key: SPARK_MASTER
         - name: SPARK_WORKER_CORES
           valueFrom:
             configMapKeyRef:
-              name: spark-worker-3-env-spark-worker-sh
+              name: spark-worker-3-env
               key: SPARK_WORKER_CORES
         - name: SPARK_WORKER_MEMORY
           valueFrom:
             configMapKeyRef:
-              name: spark-worker-3-env-spark-worker-sh
+              name: spark-worker-3-env
               key: SPARK_WORKER_MEMORY
         ports:
         - name: webui
