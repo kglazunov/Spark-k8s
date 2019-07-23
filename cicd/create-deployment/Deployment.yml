@@ -6,6 +6,7 @@ items:
     labels:
       app: spark-master-1
     name: spark-master-1
+    namespace: spark
   spec:
     clusterIP: "None"
     type: ClusterIP
