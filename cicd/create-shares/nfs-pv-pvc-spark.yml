@@ -1,4 +1,4 @@
-apiVersion: v1
+apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   namespace: spark
@@ -32,7 +32,7 @@ spec:
       - name: exports
         emptyDir: {}
 ---
-apiVersion: v1
+apiVersion: extensions/v1beta1
 kind: Service
 metadata:
   namespace: spark
