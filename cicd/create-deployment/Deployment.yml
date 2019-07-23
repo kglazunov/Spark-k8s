@@ -142,7 +142,7 @@ items:
     labels:
       app: spark-worker-1
     name: spark-worker-1-env
-- apiVersion: apps/v1beta2
+- apiVersion: apps/v1
   kind: Deployment
   metadata:
     creationTimestamp: null
@@ -224,7 +224,7 @@ items:
     labels:
       app: spark-worker-2
     name: spark-worker-2-env
-- apiVersion: apps/v1beta2
+- apiVersion: apps/v1
   kind: Deployment
   metadata:
     creationTimestamp: null
