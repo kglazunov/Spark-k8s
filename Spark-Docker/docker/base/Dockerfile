@@ -20,6 +20,10 @@ RUN yum install -y \
     python36 \
     python36-pip \
     git \
+    telnet \
+    tcpdump \
+    net-tools \
+    bind-utils \
     java-1.8.0-openjdk \
     java-1.8.0-openjdk-devel \
     tar \
@@ -49,3 +53,5 @@ RUN cd "/tmp" && \
 RUN wget --no-verbose http://apache.mirror.iphh.net/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz && tar -xvzf spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz \
       && mv spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION} spark \
       && rm spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz
+
+COPY Pi.py /spark/Pi.py

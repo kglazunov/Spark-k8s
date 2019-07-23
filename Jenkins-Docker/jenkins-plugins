@@ -26,3 +26,4 @@ ssh-agent
 credentials
 ssh-credentials
 kubernetes-cd-plugin
+kubernetes-cd
