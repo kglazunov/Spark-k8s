@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: spark
+  name: spark-worker-1-env
+  labels:
+    app: spark-worker-1
+data:
+  SPARK_DRIVER_MEMORY: 128m
+  SPARK_EXECUTOR_MEMORY: 256m
+  SPARK_MASTER: spark://spark-master-1:7077
+  SPARK_MASTER_HOST: spark-master-1
+  SPARK_WORKER_CORES: "1"
+  SPARK_WORKER_MEMORY: 1G
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: spark
+  name: spark-worker-2-env
+  labels:
+    app: spark-worker-2
+data:
+  SPARK_DRIVER_MEMORY: 128m
+  SPARK_EXECUTOR_MEMORY: 256m
+  SPARK_MASTER: spark://spark-master-1:7077
+  SPARK_MASTER_HOST: spark-master-1
+  SPARK_WORKER_CORES: "1"
+  SPARK_WORKER_MEMORY: 1G
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: spark
+  name: spark-worker-3-env
+  labels:
+    app: spark-worker-3
+data:
+  SPARK_DRIVER_MEMORY: 128m
+  SPARK_EXECUTOR_MEMORY: 256m
+  SPARK_MASTER: spark://spark-master-1:7077
+  SPARK_MASTER_HOST: spark-master-1
+  SPARK_WORKER_CORES: "1"
+  SPARK_WORKER_MEMORY: 1G
+---
