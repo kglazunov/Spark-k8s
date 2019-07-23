@@ -1,52 +1,38 @@
-apiVersion: v1
-items:
-- apiVersion: apps/v1
-  kind: Deployment
-  metadata:
-    creationTimestamp: null
-    name: spark-master
-    namespace: "spark"
-    labels:
-      app: "spark-master-1"
-  spec:
-    replicas: 1
-    selector:
-      matchLabels:
-        app: "spark-master-1"
-    strategy:
-      type: Recreate
-    template:
-      metadata:
-        labels:
-          app: "spark-master-1"
-        creationTimestamp: null
-      spec:
-        hostname: spark-master-1
-        containers:
-        - env:
-          - name: SPARK_PUBLIC_DNS
-            value: kglazunov-vm-k8.minsk.epam.com
-          - name: SPARK_MASTER_PORT
-            value: "7077"
-          image: spark-master:2.4.3
-          imagePullPolicy: Never
-          name: spark-master
-          ports:
-          - containerPort: 8080
-          - containerPort: 7077
-          resources: {}
-          volumeMounts:
-          - mountPath: /opt/spark-apps
-            subPath: spark-apps
-            name: nfs-spark
-          - mountPath: /opt/spark-data
-            subPath: spark-data
-            name: nfs-spark
-        restartPolicy: Always
-        volumes:
-        - name: nfs-spark
-          persistentVolumeClaim:
-            claimName: nfs-docker-spark
-  status: {}
-kind: List
-metadata: {}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: spark
+  name: spark-master
+  labels:
+    app: "spark-master-1"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spark-master-1
+  template:
+    metadata:
+      labels:
+        app: spark-master-1
+    spec:
+      containers:
+      - name: spark-master
+        imagePullPolicy: Never
+        image: spark-master:2.4.3
+        ports:
+        - name: webui
+          containerPort: 8080
+        - name: driver
+          containerPort: 7077
+        volumeMounts:
+        - mountPath: /opt/spark-apps
+          subPath: spark-apps
+          name: nfs-spark
+        - mountPath: /opt/spark-data
+          subPath: spark-data
+          name: nfs-spark
+      volumes:
+      - name: nfs-spark
+        persistentVolumeClaim:
+          claimName: nfs-docker-spark
+---
