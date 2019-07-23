@@ -15,6 +15,7 @@ spec:
       labels:
         app: spark-master-1
     spec:
+      hostname: spark-master-1
       containers:
       - name: spark-master
         imagePullPolicy: Never
