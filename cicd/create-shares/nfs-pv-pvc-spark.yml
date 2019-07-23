@@ -18,11 +18,11 @@ spec:
         image: gcr.io/google_containers/volume-nfs:0.8
         ports:
         - name: nfs
-          containerPort: 2049
+          containerPort: "2049"
         - name: mountd
-          containerPort: 20048
+          containerPort: "20048"
         - name: rpcbind
-          containerPort: 111
+          containerPort: "111"
         securityContext:
           privileged: true
         volumeMounts:
@@ -40,11 +40,11 @@ metadata:
 spec:
   ports:
   - name: nfs
-    port: 2049
+    port: "2049"
   - name: mountd
-    port: 20048
+    port: "20048"
   - name: rpcbind
-    port: 111
+    port: "111"
   selector:
     role: nfs-server
   clusterIP: "10.107.195.27"
@@ -56,13 +56,13 @@ metadata:
   name: nfs-docker-spark
 spec:
   capacity:
-    storage: 100Mi
+    storage: "100Mi"
   accessModes:
     - ReadWriteMany
   storageClassName: nfs
   nfs:
 #    server: nfs-server.spark.svc.cluster.local
-    server: 10.107.195.27
+    server: "10.107.195.27"
     path: "/exports"
 ---
 apiVersion: v1
@@ -76,4 +76,4 @@ spec:
   storageClassName: nfs
   resources:
     requests:
-      storage: 100Mi
+      storage: "100Mi:
