@@ -36,3 +36,111 @@ spec:
         persistentVolumeClaim:
           claimName: nfs-docker-spark
 ---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: spark
+  name: spark-worker
+  labels:
+    app: "spark-worker-1"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spark-worker-1
+  template:
+    metadata:
+      labels:
+        app: spark-worker-1
+    spec:
+      containers:
+      - name: spark-worker-1
+        imagePullPolicy: Never
+        image: spark-worker:2.4.3
+        ports:
+        - name: webui
+          containerPort: 8081
+        volumeMounts:
+        - mountPath: /opt/spark-apps
+          subPath: spark-apps
+          name: nfs-spark
+        - mountPath: /opt/spark-data
+          subPath: spark-data
+          name: nfs-spark
+      volumes:
+      - name: nfs-spark
+        persistentVolumeClaim:
+          claimName: nfs-docker-spark
+---
+piVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: spark
+  name: spark-worker
+  labels:
+    app: "spark-worker-2"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spark-worker-2
+  template:
+    metadata:
+      labels:
+        app: spark-worker-2
+    spec:
+      containers:
+      - name: spark-worker-2
+        imagePullPolicy: Never
+        image: spark-worker:2.4.3
+        ports:
+        - name: webui
+          containerPort: 8081
+        volumeMounts:
+        - mountPath: /opt/spark-apps
+          subPath: spark-apps
+          name: nfs-spark
+        - mountPath: /opt/spark-data
+          subPath: spark-data
+          name: nfs-spark
+      volumes:
+      - name: nfs-spark
+        persistentVolumeClaim:
+          claimName: nfs-docker-spark
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: spark
+  name: spark-worker
+  labels:
+    app: "spark-worker-3"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spark-worker-3
+  template:
+    metadata:
+      labels:
+        app: spark-worker-3
+    spec:
+      containers:
+      - name: spark-worker-3
+        imagePullPolicy: Never
+        image: spark-worker:2.4.3
+        ports:
+        - name: webui
+          containerPort: 8081
+        volumeMounts:
+        - mountPath: /opt/spark-apps
+          subPath: spark-apps
+          name: nfs-spark
+        - mountPath: /opt/spark-data
+          subPath: spark-data
+          name: nfs-spark
+      volumes:
+      - name: nfs-spark
+        persistentVolumeClaim:
+          claimName: nfs-docker-spark
+---
