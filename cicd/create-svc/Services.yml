@@ -3,7 +3,6 @@ items:
 - apiVersion: v1
   kind: Service
   metadata:
-    namespace: "spark"
     labels:
       app: spark-master-1
     name: spark-master-1
@@ -22,7 +21,6 @@ items:
 - apiVersion: v1
   kind: Service
   metadata:
-    namespace: "spark"
     labels:
       app: spark-worker-1
     name: spark-worker-1
@@ -37,7 +35,6 @@ items:
       app: spark-worker-1
 - apiVersion: v1
   kind: Service
-  namespace: "spark"
   metadata:
     labels:
       app: spark-worker-2
@@ -54,7 +51,6 @@ items:
 - apiVersion: v1
   kind: Service
   metadata:
-  namespace: "spark"
     labels:
       app: spark-worker-3
     name: spark-worker-3
