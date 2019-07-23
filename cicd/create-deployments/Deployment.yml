@@ -119,6 +119,32 @@ spec:
       - name: spark-worker-2
         imagePullPolicy: Never
         image: spark-worker:2.4.3
+        env:
+        - name: SPARK_DRIVER_MEMORY
+          valueFrom:
+            configMapKeyRef:
+              name: spark-worker-2-env-spark-worker-sh
+              key: SPARK_DRIVER_MEMORY
+        - name: SPARK_EXECUTOR_MEMORY
+          valueFrom:
+             configMapKeyRef:
+               name: spark-worker-2-env-spark-worker-sh
+               key: SPARK_EXECUTOR_MEMORY
+        - name: SPARK_MASTER
+          valueFrom:
+            configMapKeyRef:
+              name: spark-worker-2-env-spark-worker-sh
+              key: SPARK_MASTER
+        - name: SPARK_WORKER_CORES
+          valueFrom:
+            configMapKeyRef:
+              name: spark-worker-2-env-spark-worker-sh
+              key: SPARK_WORKER_CORES
+        - name: SPARK_WORKER_MEMORY
+          valueFrom:
+            configMapKeyRef:
+              name: spark-worker-2-env-spark-worker-sh
+              key: SPARK_WORKER_MEMORY
         ports:
         - name: webui
           containerPort: 8081
