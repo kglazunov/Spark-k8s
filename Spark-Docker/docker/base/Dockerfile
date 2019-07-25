@@ -35,7 +35,8 @@ RUN pip3 install --upgrade pip && \
     pip3 install --no-cache-dir numpy && \
     pip3 install --no-cache-dir pyspark
     
-RUN /usr/bin/python -m pip install numpy && \
+RUN /usr/bin/python -m pip install --upgrade pip && \
+    /usr/bin/python -m pip install numpy && \
     /usr/bin/python -m pip install pyspark
 
 RUN cd "/tmp" && \
