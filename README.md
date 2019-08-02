@@ -3,9 +3,11 @@
   `docker build -f Dockerfile .`
 1) Create a task for clone repo, creating containers and executing Pi.py in the Spark cluster 
 
-From attached Jenkinsfile will be doing:
+ From attached Jenkinsfile will be doing:
 * Build Spark images with python36 and pyspark, numpy packages
 * Run Spark cluster via docker-compose
 * Run testing python script (Pi Estimation)
 * Shutdown Spark cluster via docker-compose
 * Remove Spark docker images
+
+You have to change HOST-WITH-SPARK in the Pi.py script to your Spark hostname or rewrite this parameter as a variable.
