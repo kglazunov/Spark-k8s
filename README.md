@@ -17,6 +17,4 @@ From attached Jenkinsfile will be doing:
 * Shutdown Spark cluster via docker-compose
 * Remove Spark docker images
 
-You have to change HOST-WITH-SPARK in the Pi.py script to your Spark hostname or rewrite this parameter as a variable.
-
 Spark images based on CentOS 7 with extra packages for debugging. Make sense to change it for something lightweight for example Alpine in case of every day running.
