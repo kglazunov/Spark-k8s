@@ -7,7 +7,7 @@ Versions:
 - HADOOP_VERSION=2.7
 
 0) Create Jenkins docker container with needed plugins 
-  `docker build -f Dockerfile .`
+  `docker build -t "jenkins:custom" -f Dockerfile .`
 1) Create a task for clone repo, creating containers and executing Pi.py in the Spark cluster 
 
 From attached Jenkinsfile will be doing:
