@@ -19,4 +19,4 @@ From attached Jenkinsfile will be doing:
 
 Spark images based on CentOS 7 with extra packages for debugging. Make sense to change it for something lightweight for example Alpine in case of every day running.
 
-02
+test 03
